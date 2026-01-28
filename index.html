@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPGSS - Pakistan Public Girls Secondary School</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple-dark: #4a148c;
+            --purple-main: #7b1fa2;
+            --purple-light: #9c27b0;
+            --purple-lighter: #ba68c8;
+            --purple-pale: #e1bee7;
+            --purple-ghost: #f3e5f5;
+            --white: #ffffff;
+            --text-dark: #2c2c2c;
+            --text-light: #666666;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Fluid Typography */
+        h1 {
+            font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 3vw + 1rem, 3.5rem);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2vw + 0.5rem, 2.5rem);
+            line-height: 1.4;
+        }
+
+        p {
+            font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--purple-dark);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 3rem);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: clamp(1.5rem, 2vw, 1.8rem);
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--purple-lighter);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--purple-lighter);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-main) 50%, var(--purple-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: clamp(2rem, 5vw, 4rem);
+            padding-top: calc(70px + clamp(2rem, 5vw, 4rem));
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 30s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 1200px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            margin-bottom: clamp(1rem, 3vw, 2rem);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            margin-bottom: clamp(1.5rem, 3vw, 3rem);
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: clamp(0.75rem, 2vw, 1.25rem) clamp(1.5rem, 3vw, 3rem);
+            background: var(--white);
+            color: var(--purple-main);
+            text-decoration: none;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 3rem);
+            scroll-margin-top: 70px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--purple-dark);
+            margin-bottom: clamp(2rem, 4vw, 4rem);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(60px, 10vw, 100px);
+            height: 4px;
+            background: var(--purple-light);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--purple-ghost);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(2rem, 4vw, 3rem);
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: clamp(1rem, 2vw, 2rem);
+        }
+
+        .stat-box {
+            background: var(--white);
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: bold;
+            color: var(--purple-main);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        }
+
+        /* Programs Section */
+        .programs {
+            background: var(--white);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        .program-card {
+            background: linear-gradient(135deg, var(--purple-pale) 0%, var(--white) 100%);
+            padding: clamp(2rem, 4vw, 3rem);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid var(--purple-pale);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(123, 31, 162, 0.2);
+        }
+
+        .program-icon {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .program-card h3 {
+            color: var(--purple-dark);
+            margin-bottom: 1rem;
+        }
+
+        .program-card p {
+            color: var(--text-light);
+        }
+
+        /* Facilities Section */
+        .facilities {
+            background: var(--purple-ghost);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .facility-item {
+            background: var(--white);
+            padding: clamp(1.5rem, 3vw, 2rem);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .facility-item:hover {
+            background: var(--purple-main);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .facility-icon {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Admissions Section */
+        .admissions {
+            background: var(--white);
+        }
+
+        .admission-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(2rem, 4vw, 3rem);
+        }
+
+        .admission-box {
+            background: linear-gradient(135deg, var(--purple-main) 0%, var(--purple-light) 100%);
+            color: var(--white);
+            padding: clamp(2rem, 4vw, 3rem);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .admission-box h3 {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .admission-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .admission-box li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .admission-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--purple-pale);
+            font-weight: bold;
+        }
+
+        /* Results Section */
+        .results {
+            background: var(--purple-ghost);
+        }
+
+        .results-content {
+            text-align: center;
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin-top: 3rem;
+        }
+
+        .result-card {
+            background: var(--white);
+            padding: clamp(2rem, 4vw, 3rem);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-year {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: var(--purple-main);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .result-percentage {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: bold;
+            color: var(--purple-dark);
+            display: block;
+        }
+
+        .result-label {
+            color: var(--text-light);
+        }
+
+        /* Faculty Section */
+        .faculty {
+            background: var(--white);
+        }
+
+        .faculty-content {
+            text-align: center;
+        }
+
+        .faculty-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin-top: 2rem;
+        }
+
+        .faculty-card {
+            background: linear-gradient(135deg, var(--purple-pale) 0%, var(--white) 100%);
+            padding: clamp(2rem, 4vw, 2.5rem);
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faculty-card h3 {
+            color: var(--purple-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* News & Events Section */
+        .news-events {
+            background: var(--purple-ghost);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--purple-light) 0%, var(--purple-lighter) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .news-content {
+            padding: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .news-date {
+            color: var(--purple-main);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-card h3 {
+            color: var(--purple-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(2rem, 4vw, 3rem);
+        }
+
+        .contact-info {
+            background: var(--purple-ghost);
+            padding: clamp(2rem, 4vw, 3rem);
+            border-radius: 20px;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item h3 {
+            color: var(--purple-dark);
+            margin-bottom: 0.5rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+        }
+
+        .contact-item p {
+            color: var(--text-light);
+        }
+
+        .contact-form {
+            background: var(--purple-pale);
+            padding: clamp(2rem, 4vw, 3rem);
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--purple-dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: clamp(0.75rem, 2vw, 1rem);
+            border: 2px solid var(--purple-lighter);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--purple-main);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: clamp(0.75rem, 2vw, 1rem);
+            background: var(--purple-main);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: var(--purple-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--purple-dark);
+            color: var(--white);
+            padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 3rem) clamp(1rem, 2vw, 2rem);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--purple-lighter);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--purple-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--purple-lighter);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+            
+            nav {
+                padding: 0.75rem 0;
+            }
+            
+            section {
+                scroll-margin-top: 100px;
+            }
+            
+            .hero {
+                padding-top: calc(100px + clamp(2rem, 5vw, 4rem));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">PPGSS</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Pakistan Public Girls Secondary School</h1>
+            <p>Empowering Young Minds from Primary to FSC - Est since 1995</p>
+            <a href="#admissions" class="cta-button">Apply for Admission 2026</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About PPGSS</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Pakistan Public Girls Secondary School (PPGSS), established in 1995, is a distinguished educational institution dedicated to providing quality education to young girls from Primary level through FSC (Faculty of Science). Located in Pakistan, we pride ourselves on our commitment to academic excellence, character development, and holistic growth.</p>
+                    <p>Our institution combines traditional Islamic values with modern educational methodologies, preparing our students to become confident, knowledgeable, and responsible citizens. With state-of-the-art facilities and a highly qualified faculty, we ensure every student receives personalized attention and support.</p>
+                    <p>PPGSS maintains a nurturing environment where girls can flourish academically, socially, and spiritually. We believe in empowering young women through education and building a strong foundation for their future success.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <span class="stat-number">1500+</span>
+                        <span class="stat-label">Students</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">80+</span>
+                        <span class="stat-label">Qualified Teachers</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Years Excellence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2 class="section-title">Our Academic Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">📚</div>
+                    <h3>Primary Section</h3>
+                    <p>Classes 1-5: Building strong foundations with interactive learning, Islamiyat, English, Urdu, Mathematics, Science, and Computer Studies. Focus on cognitive development and moral values.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🎓</div>
+                    <h3>Middle Section</h3>
+                    <p>Classes 6-8: Comprehensive curriculum including advanced subjects, co-curricular activities, and skill development programs to prepare students for secondary education.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">📖</div>
+                    <h3>Secondary Section (Matric)</h3>
+                    <p>Classes 9-10: SSC preparation with Science and Arts groups. Rigorous academic program aligned with Board examination requirements with special focus on board success.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🔬</div>
+                    <h3>Intermediate - FSC</h3>
+                    <p>Classes 11-12: Faculty of Science program preparing students for Medical and Engineering entrance tests. Pre-Medical and Pre-Engineering groups available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="facilities">
+        <div class="container">
+            <h2 class="section-title">World-Class Facilities</h2>
+            <div class="facilities-grid">
+                <div class="facility-item">
+                    <span class="facility-icon">🔬</span>
+                    <h3>Science Labs</h3>
+                    <p>Physics, Chemistry, Biology</p>
+                </div>
+                <div class="facility-item">
+                    <span class="facility-icon">💻</span>
+                    <h3>Computer Lab</h3>
+                    <p>Latest Technology</p>
+                </div>
+                <div class="facility-item">
+                    <span class="facility-icon">📚</span>
+                    <h3>Library</h3>
+                    <p>10,000+ Books</p>
+                </div>
+                <div class="facility-item">
+                    <span class="facility-icon">🏃</span>
+                    <h3>Sports Facilities</h3>
+                    <p>Indoor & Outdoor</p>
+                </div>
+                <div class="facility-item">
+                    <span class="facility-icon">🎨</span>
+                    <h3>Art Studio</h3>
+                    <p>Creative Expression</p>
+                </div>
+                <div class="facility-item">
+                    <span class="facility-icon">🕌</span>
+                    <h3>Prayer Room</h3>
+                    <p>Islamic Values</p>
+                </div>
+                <div class="facility-item">
+                    <span class="facility-icon">🚌</span>
+                    <h3>Transport</h3>
+                    <p>Safe & Reliable</p>
+                </div>
+                <div class="facility-item">
+                    <span class="facility-icon">🏥</span>
+                    <h3>Medical Room</h3>
+                    <p>Health Care</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section id="admissions" class="admissions">
+        <div class="container">
+            <h2 class="section-title">Admissions 2026</h2>
+            <div class="admission-content">
+                <div class="admission-box">
+                    <h3>Admission Requirements</h3>
+                    <ul>
+                        <li>Completed application form</li>
+                        <li>Copy of birth certificate (B-Form)</li>
+                        <li>Previous academic records</li>
+                        <li>Recent passport-size photographs</li>
+                        <li>Parent/Guardian CNIC copies</li>
+                        <li>Entrance test (for relevant classes)</li>
+                        <li>Original leaving certificate from previous school</li>
+                    </ul>
+                </div>
+                <div class="admission-box">
+                    <h3>Admission Process</h3>
+                    <ul>
+                        <li>Submit application form with documents</li>
+                        <li>Appear for entrance test/interview</li>
+                        <li>Await admission confirmation</li>
+                        <li>Pay admission fee upon acceptance</li>
+                        <li>Collect fee vouchers and schedule</li>
+                        <li>Attend orientation session</li>
+                        <li>Start classes as per academic calendar</li>
+                    </ul>
+                </div>
+                <div class="admission-box">
+                    <h3>Important Dates</h3>
+                    <ul>
+                        <li>Application Start: January 15, 2026</li>
+                        <li>Application Deadline: February 28, 2026</li>
+                        <li>Entrance Tests: March 1-15, 2026</li>
+                        <li>Result Announcement: March 25, 2026</li>
+                        <li>Fee Submission: March 26 - April 10</li>
+                        <li>Academic Session Starts: April 15, 2026</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="results">
+        <div class="container">
+            <h2 class="section-title">Outstanding Academic Results</h2>
+            <div class="results-content">
+                <p>PPGSS takes pride in consistently delivering exceptional board examination results. Our students have achieved remarkable success rates in both SSC and HSSC examinations, making us one of the top-performing schools in the region.</p>
+                <div class="results-stats">
+                    <div class="result-card">
+                        <div class="result-year">SSC 2025</div>
+                        <span class="result-percentage">98%</span>
+                        <div class="result-label">Pass Percentage</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-year">HSSC 2025</div>
+                        <span class="result-percentage">96%</span>
+                        <div class="result-label">Pass Percentage</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-year">A+ Grades</div>
+                        <span class="result-percentage">45%</span>
+                        <div class="result-label">Students Achieved</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-year">Top Positions</div>
+                        <span class="result-percentage">12</span>
+                        <div class="result-label">Board Positions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section id="faculty" class="faculty">
+        <div class="container">
+            <h2 class="section-title">Our Dedicated Faculty</h2>
+            <div class="faculty-content">
+                <p>Our highly qualified and experienced faculty members are the backbone of PPGSS. With advanced degrees and years of teaching experience, they are committed to nurturing academic excellence and character development in every student.</p>
+                <div class="faculty-stats">
+                    <div class="faculty-card">
+                        <h3>80+ Teachers</h3>
+                        <p>Highly qualified and experienced educators dedicated to student success</p>
+                    </div>
+                    <div class="faculty-card">
+                        <h3>Master's & PhD</h3>
+                        <p>Faculty with advanced degrees from recognized universities</p>
+                    </div>
+                    <div class="faculty-card">
+                        <h3>Specialized Training</h3>
+                        <p>Regular professional development and workshops</p>
+                    </div>
+                    <div class="faculty-card">
+                        <h3>Student-Centric</h3>
+                        <p>Personalized attention and mentoring for each student</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Events Section -->
+    <section id="news" class="news-events">
+        <div class="container">
+            <h2 class="section-title">Latest News & Events</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">📰</div>
+                    <div class="news-content">
+                        <div class="news-date">January 20, 2026</div>
+                        <h3>Annual Science Exhibition 2026</h3>
+                        <p>Our students showcased innovative science projects. The event was a grand success with participation from all grade levels.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">🏆</div>
+                    <div class="news-content">
+                        <div class="news-date">January 15, 2026</div>
+                        <h3>Inter-School Debate Competition</h3>
+                        <p>PPGSS team won first position in the district-level debate competition, demonstrating exceptional oratory skills.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">🎉</div>
+                    <div class="news-content">
+                        <div class="news-date">January 10, 2026</div>
+                        <h3>Parent-Teacher Meeting</h3>
+                        <p>Successful PTM held with excellent parent participation. Discussed academic progress and future plans.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📍 Address</h3>
+                        <p>Main Campus, Education City<br>Lahore, Punjab, Pakistan</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>✉️ Email</h3>
+                        <p>info@ppgss.edu.pk<br>admissions@ppgss.edu.pk</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🕐 Office Hours</h3>
+                        <p>Monday - Friday: 8:00 AM - 3:00 PM<br>Saturday: 8:00 AM - 12:00 PM</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About PPGSS</h3>
+                <p>Pakistan Public Girls Secondary School is dedicated to providing quality education from Primary to FSC level, empowering young women through knowledge and Islamic values.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📺</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#about">About Us</a>
+                <a href="#programs">Programs</a>
+                <a href="#admissions">Admissions</a>
+                <a href="#results">Results</a>
+                <a href="#faculty">Faculty</a>
+            </div>
+            <div class="footer-section">
+                <h3>Programs</h3>
+                <a href="#">Primary Section</a>
+                <a href="#">Middle Section</a>
+                <a href="#">Matric (SSC)</a>
+                <a href="#">Intermediate (FSC)</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 128/6R, BYW</p>
+                <p>✉️ info@ppgss.edu.pk</p>
+                <p>🕐 Mon-Sat: 8:00 AM - 3:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pakistan Public Girls Secondary School (PPGSS). All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
